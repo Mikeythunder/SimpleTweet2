@@ -49,7 +49,7 @@ public class Tweet {
                     tweet.media = media.getJSONObject(0).getString("media_url_https");
             }
         } catch (JSONException e) {
-            e.printStackTrace();
+            Log.e("Media Image", "error fetching mediaUrl");
         }
         //fromJson is a method in the user class
         User user = User.fromJson(jsonObject.getJSONObject("user"));
