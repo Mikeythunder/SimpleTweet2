@@ -20,7 +20,7 @@ The following **optional** features are implemented:
 - [X] Improve the user interface and theme the app to feel "twitter branded"
 - [X] Links in tweets are clickable and will launch the web browser
 - [X] User can tap a tweet to display a "detailed" view of that tweet
-- [ ] User can see embedded image media within the tweet detail view
+- [X] User can see embedded image media within the tweet detail view
 - [ ] User can watch embedded video within the tweet
 - [X] User can open the twitter app offline and see last loaded tweets
 - [ ] On the Twitter timeline, leverage the CoordinatorLayout to apply scrolling behavior that hides / shows the toolbar.
@@ -35,8 +35,8 @@ The following **additional** features are implemented:
 Here's a walkthrough of implemented user stories:
 
 <img src='https://i.imgur.com/BJKLn5A.gif' width='' alt='Video Walkthrough' />
-<img src='https://i.imgur.com/F9IFHNo.gif' width='' alt='Video Walkthrough' />
-<img src='https://i.imgur.com/dgeqstr.gif' width='' alt='Video Walkthrough' />
+<img src='https://i.imgur.com/TqTq4tQ.gif' width='' alt='Video Walkthrough' />
+<img src='https://i.imgur.com/zi19Mhg.gif' width='' alt='Video Walkthrough' />
 
 
 
