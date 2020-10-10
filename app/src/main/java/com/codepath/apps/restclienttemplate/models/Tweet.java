@@ -46,7 +46,6 @@ public class Tweet {
             JSONObject entities = jsonObject.getJSONObject("entities");
             JSONArray media = entities.getJSONArray("media");
             if (media.length() > 0) {
-                    Log.d("DEBUG", "A tweet with media object");
                     tweet.media = media.getJSONObject(0).getString("media_url_https");
             }
         } catch (JSONException e) {
