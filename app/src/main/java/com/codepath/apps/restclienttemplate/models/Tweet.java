@@ -38,6 +38,9 @@ public class Tweet {
     @ColumnInfo
     public Long userId;
 
+    //empty constructor required by parceler
+    public Tweet(){}
+
     public static Tweet fromJson(JSONObject jsonObject) throws JSONException {
         Tweet tweet = new Tweet();
         tweet.body = jsonObject.getString("text");

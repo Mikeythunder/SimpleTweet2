@@ -1,13 +1,18 @@
 package com.codepath.apps.restclienttemplate;
 
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
+import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.Menu;
+import android.view.MenuItem;
+import android.widget.Toast;
 
 import com.codepath.apps.restclienttemplate.models.Tweet;
 import com.codepath.apps.restclienttemplate.models.TweetDao;
@@ -17,6 +22,7 @@ import com.codepath.asynchttpclient.callback.JsonHttpResponseHandler;
 
 import org.json.JSONArray;
 import org.json.JSONException;
+import org.parceler.Parcels;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -29,6 +35,7 @@ import okhttp3.Headers;
 public class TimeLineActivity extends AppCompatActivity {
 
     public static final String TAG = "TimeLineActivity";
+    private final int REQUEST_CODE = 20;
 
     TweetDao tweetDao;
     TwitterClient client;
@@ -120,6 +127,34 @@ public class TimeLineActivity extends AppCompatActivity {
        populateHomeTimeline();
     }
 
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        //Inflate the new menu being created
+            //This getMenuInflater inflates the menu xml file we inputted and puts it in the menu we input into the function
+        getMenuInflater().inflate(R.menu.menu_main, menu);
+        //Make it return true bc must return true for it to work
+        return true;
+    }
+
+    @Override
+    //This method gets input checking if an menu item is tapped
+        //IT must check if the click is on the compose item ID that we created
+        //That's why there is an if statement
+    public boolean onOptionsItemSelected(MenuItem item) {
+        if(item.getItemId() == R.id.compose){
+            //Compose item has been tapped if the statement is true
+
+            //Navigate to the compose activity view
+            //The intent takes in where it is coming from, and where it is going
+            Intent intent = new Intent(this, ComposeActivity.class);
+            //By passing in the REQUEST_CODE we can now get the data back
+            startActivityForResult(intent, REQUEST_CODE);
+            return true;
+
+        }
+        return super.onOptionsItemSelected(item);
+    }
+
     //This method is for a stretch story
     private void loadMoreData() {
         // 1. Send an API request to retrieve appropriate paginated data
@@ -146,6 +181,22 @@ public class TimeLineActivity extends AppCompatActivity {
             }
         }, tweets.get(tweets.size()-1).id);
 
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        if(REQUEST_CODE == requestCode && resultCode == RESULT_OK){
+            // Get data from the intent
+            Tweet tweet = Parcels.unwrap(data.getParcelableExtra("tweet"));
+            //Update recycler view with tweet
+                //Modify data source(List of Tweets)
+                //Add to the front of the list
+            tweets.add(0, tweet);
+                //Update the adapter
+            adapter.notifyItemInserted(0);
+            rvTweets.smoothScrollToPosition(0);
+        }
+        super.onActivityResult(requestCode, resultCode, data);
     }
 
     private void populateHomeTimeline() {

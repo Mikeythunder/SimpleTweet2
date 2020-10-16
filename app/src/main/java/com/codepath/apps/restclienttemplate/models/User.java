@@ -25,6 +25,10 @@ public class User {
     @ColumnInfo
     public String profileImageUrl;
 
+    //basic constructor for parceler
+
+    public User(){}
+
     public static User fromJson(JSONObject jsonObject) throws JSONException {
         User user = new User();
         user.id = jsonObject.getLong("id");
