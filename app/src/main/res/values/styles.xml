@@ -7,6 +7,8 @@
             res/values-vXX/styles.xml, while customizations related to
             backward-compatibility can go here.
         -->
+        <item name="android:windowContentTransitions">true</item>
+
     </style>
 
     <!-- Application theme. -->

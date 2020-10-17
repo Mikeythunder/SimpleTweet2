@@ -18,6 +18,7 @@
         android:layout_toEndOf="@+id/ivProfile"
         android:text="TextView"
         android:textSize="30sp"
+        android:transitionName="profile"
         android:textStyle="bold" />
 
     <TextView

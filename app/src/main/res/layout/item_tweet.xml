@@ -29,6 +29,7 @@
         android:layout_toEndOf="@+id/ivProfileImage"
         android:textStyle="bold"
         android:textSize="20sp"
+        android:transitionName="profile"
         android:text="Sample Text Here" />
 
 

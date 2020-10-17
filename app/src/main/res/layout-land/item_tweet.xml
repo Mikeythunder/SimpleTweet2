@@ -28,6 +28,7 @@
         android:layout_marginTop="0dp"
         android:layout_toEndOf="@+id/ivProfileImage"
         android:textStyle="bold"
+        android:transitionName="profile"
         android:textSize="20sp"
         android:text="Sample Text Here" />
 
